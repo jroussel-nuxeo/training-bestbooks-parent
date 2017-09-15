@@ -1,0 +1,12 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Manifest-Version: 1.0
+Bundle-Vendor: org.nuxeo.training.bestbooks
+Bundle-Version: 1.0.0
+Bundle-Name: bestbooks-core
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.nuxeo.training.bestbooks.bestbooks-core;singleton=true
+Nuxeo-Component: OSGI-INF/checkuserpermission-operation-contrib.xml,
+ OSGI-INF/listener-contrib.xml,
+ OSGI-INF/helloworldoperation-operation-contrib.xml,
+ OSGI-INF/monservice-service.xml

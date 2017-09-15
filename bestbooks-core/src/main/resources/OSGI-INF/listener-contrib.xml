@@ -1,0 +1,7 @@
+<component name="bestbooks.core.listener-contrib">
+    <extension point="listener" target="org.nuxeo.ecm.core.event.EventServiceComponent">
+        <listener async="false" class="org.nuxeo.training.bestbooks.PublicationDateListener" name="bbUpdatePublicationDate" postCommit="false" priority="10">
+            <event>emptyDocumentModelCreated</event>
+        </listener>
+    </extension>
+</component>
