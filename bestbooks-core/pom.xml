@@ -24,6 +24,7 @@
       <groupId>nuxeo-studio</groupId>
       <artifactId>jroussel-SANDBOX</artifactId>
       <version>0.0.1--feature--nuxeo-training-SNAPSHOT</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.nuxeo.runtime</groupId>

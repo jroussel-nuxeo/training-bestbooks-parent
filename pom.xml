@@ -16,6 +16,7 @@
 
   <modules>
     <module>bestbooks-core</module>
+    <module>bestbooks-package</module>
   </modules>
 
   <repositories>
@@ -71,6 +72,11 @@
       <dependency>
         <groupId>org.nuxeo.training.bestbooks</groupId>
         <artifactId>bestbooks-core</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.nuxeo.training.bestbooks</groupId>
+        <artifactId>bestbooks-package</artifactId>
         <version>1.0-SNAPSHOT</version>
       </dependency>
     </dependencies>
