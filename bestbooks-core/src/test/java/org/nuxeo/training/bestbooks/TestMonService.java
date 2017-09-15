@@ -27,6 +27,13 @@ public class TestMonService {
 
     @Test
     public void testRun() {
-        Assert.assertTrue(monservice.run().startsWith("Contenu"));
+        Assert.assertTrue(monservice.run(null).startsWith("Contenu"));
+    }
+
+    @Test
+    public void testRunAction1() {
+        Assert.assertTrue(monservice.getActions().contains("action-1"));
+
+        Assert.assertEquals("doaction other", monservice.run("action-1"));
     }
 }

@@ -1,17 +1,12 @@
 package org.nuxeo.training.bestbooks;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.nuxeo.ecm.automation.core.Constants;
-import org.nuxeo.ecm.automation.core.annotations.Context;
 import org.nuxeo.ecm.automation.core.annotations.Operation;
 import org.nuxeo.ecm.automation.core.annotations.OperationMethod;
 import org.nuxeo.ecm.automation.core.annotations.Param;
 import org.nuxeo.ecm.core.api.Blob;
-import org.nuxeo.ecm.core.api.CoreSession;
-import org.nuxeo.ecm.core.api.DocumentModel;
-import org.nuxeo.ecm.core.api.PathRef;
 import org.nuxeo.ecm.core.api.impl.blob.StringBlob;
 import org.nuxeo.runtime.api.Framework;
 
@@ -34,13 +29,16 @@ public class HelloWorldOperation {
 
     public static final String ID = "HelloWorldOperation";
 
+    @Param(name="action", required=true)
+    private String action;
+
     @OperationMethod
     public Blob run() {
         log.info("HelloWorldOperation has been called");
 
         // Retrieve String message from the Service we defined aside
         MonService monService = Framework.getService(MonService.class);
-        String msg = monService.run();
+        String msg = monService.run(action);
         return new StringBlob(msg, "text/plain");
     }
 }

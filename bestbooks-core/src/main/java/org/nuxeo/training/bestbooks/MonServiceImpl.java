@@ -5,10 +5,18 @@ import org.apache.commons.logging.LogFactory;
 import org.nuxeo.runtime.model.ComponentContext;
 import org.nuxeo.runtime.model.ComponentInstance;
 import org.nuxeo.runtime.model.DefaultComponent;
+import org.nuxeo.training.bestbooks.extensionspoints.MonServiceAction;
+import org.nuxeo.training.bestbooks.extensionspoints.MonServiceDescriptor;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MonServiceImpl extends DefaultComponent implements MonService {
 
     private static final Log log = LogFactory.getLog(MonServiceImpl.class);
+
+    private Map<String, MonServiceAction> actions = new HashMap<>();
 
     /**
      * Component activated notification.
@@ -50,7 +58,21 @@ public class MonServiceImpl extends DefaultComponent implements MonService {
 
     @Override
     public void registerContribution(Object contribution, String extensionPoint, ComponentInstance contributor) {
-        // Add some logic here to handle contributions
+        if ("action".equals(extensionPoint)) {
+            try {
+                MonServiceDescriptor descr = (MonServiceDescriptor) contribution;
+                String action = descr.getAction();
+                Class<MonServiceAction> actionMyClass = descr.getMyClass();
+
+                MonServiceAction obj = actionMyClass.newInstance();
+                actions.put(action, obj);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     @Override
@@ -59,8 +81,22 @@ public class MonServiceImpl extends DefaultComponent implements MonService {
     }
 
     @Override
-    public String run() {
-        log.info("MonServiceImpl has been called");
-        return "Contenu texte produit par mon service";
+    public Set<String> getActions() {
+        return actions.keySet();
     }
+
+    @Override
+    public String run(String action) {
+        log.info("MonServiceImpl has been called");
+        if (action != null) {
+            return actions.get(action).doAction();
+        }
+        else {
+
+            return "Contenu texte produit par mon service";
+        }
+
+    }
+
+
 }

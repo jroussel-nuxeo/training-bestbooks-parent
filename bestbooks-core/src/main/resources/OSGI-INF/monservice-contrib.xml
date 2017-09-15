@@ -1,0 +1,5 @@
+<component name="bestbook.core.monservice-contrib">
+    <extension point="action" target="org.nuxeo.training.bestbooks.MonService">
+        <monserviceaction name="action-1" myClass="org.nuxeo.training.bestbooks.extensionspoints.MonServiceAutreImpl"></monserviceaction>
+    </extension>
+</component>

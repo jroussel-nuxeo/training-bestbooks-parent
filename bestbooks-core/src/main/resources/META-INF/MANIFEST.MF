@@ -9,4 +9,5 @@ Bundle-SymbolicName: org.nuxeo.training.bestbooks.bestbooks-core;singleton=true
 Nuxeo-Component: OSGI-INF/checkuserpermission-operation-contrib.xml,
  OSGI-INF/listener-contrib.xml,
  OSGI-INF/helloworldoperation-operation-contrib.xml,
- OSGI-INF/monservice-service.xml
+ OSGI-INF/monservice-service.xml,
+ OSGI-INF/monservice-contrib.xml
